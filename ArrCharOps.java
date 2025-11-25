@@ -158,16 +158,16 @@ public class ArrCharOps {
      */
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
         // Replace the following statement with your code
-        int charSize = (endIndex - beginIndex);
-        int j = 0;
-        char subArray[] = new char[charSize];
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (i >= beginIndex) {
-                subArray[j] = arr[i];
-                j++;
+        int size = (endIndex - beginIndex);
+        char result[] = new char[size];
+        for (int i = beginIndex; i < endIndex; i++) {
+            {
+
+                result[i - beginIndex] = arr[i];
+
             }
         }
-        return subArray;
+        return result;
     }
 
     /**
