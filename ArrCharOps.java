@@ -81,15 +81,12 @@ public class ArrCharOps {
      */
     public static int indexOf(char[] arr, char ch) {
         // Replace the following statement with your code
-        char arr1[] = arr;
-        int index = 0;
-        for (int i = 0; i < arr1.length; i++) {
-            if (arr1[i] == ch) {
-                index = i;
-                return index;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == ch) {
+                return i;
             }
         }
-        return index;
+        return -1;
     }
 
     /**
@@ -97,15 +94,12 @@ public class ArrCharOps {
      */
     public static int indexOf(char[] arr, char ch, int fromIndex) {
         // Replace the following statement with your code
-        int index = 0;
-        char arr1[] = arr;
-        for (int i = fromIndex; i < arr1.length; i++) {
-            if (arr1[i] == ch) {
-                index = i;
-                return index;
+        for (int i = fromIndex; i < arr.length; i++) {
+            if (arr[i] == ch) {
+                return i;
             }
         }
-        return index;
+        return -1;
     }
 
     /**
@@ -115,14 +109,10 @@ public class ArrCharOps {
      */
     public static int lastIndexOf(char[] arr, char ch) {
         // Replace the following statement with your code
-        int count = arr.length;
-        char arr1[] = arr;
-        for (int i = arr1.length - 1; i > 0; i--) {
-            if (arr1[i] == ch) {
-                return count;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == ch) {
+                return i;
             }
-            count--;
-            ;
         }
         return -1;
     }
@@ -132,17 +122,14 @@ public class ArrCharOps {
      */
     public static char[] concat(char[] arr1, char[] arr2) {
         // Replace the following statement with your code
-        char concatChar[] = new char[(arr1.length + arr2.length) + 1];
-        int index = 0;
+        char concatChar[] = new char[arr1.length + arr2.length];
         for (int i = 0; i < arr1.length; i++) {
             concatChar[i] = arr1[i];
-            index++;
+
         }
-        concatChar[index] = ' ';
-        index++;
+
         for (int i = 0; i < arr2.length; i++) {
-            concatChar[index] = arr2[i];
-            index++;
+            concatChar[arr1.length + i] = arr2[i];
         }
 
         return concatChar;
@@ -184,11 +171,15 @@ public class ArrCharOps {
      */
     public static long hashCode(char[] arr) {
         // Replace the following statement with your code
+
         int length = arr.length;
-        int hash = 0;
-        for (int i = 0; i < arr.length; i++) {
-            hash += arr[i] * (7 ^ (length - 1));
-            length--;
+        long hash = 0;
+        for (int i = 0; i < length; i++) {
+            long power = 1;
+            for (int p = 0; p < length - 1 - i; p++) {
+                power *= 7;
+            }
+            hash += arr[i] * power;
         }
         return hash;
     }
